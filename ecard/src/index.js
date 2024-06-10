@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Saudacao from './components/saudacao';
+import "./style/global.css"
+import Rotas from './rotas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<>
- <Saudacao nome="Fábio Cotta" />
+ 
+ <Rotas />
   </>
 );

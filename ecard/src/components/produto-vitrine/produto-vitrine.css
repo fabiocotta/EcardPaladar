@@ -1,0 +1,28 @@
+.produto-box{
+    border: 3px solid #E9E9E9;
+    border-radius: 18px;
+    max-width: 350px;
+    padding: 10px 10px 20px 10px;
+    display: inline-block;
+    margin: 30px;
+}
+
+.produto-box img{
+    width: 350px;
+}
+
+.prod-vitrine-descricao{
+    color: #ACACAC;
+    font-size: 1rem;
+
+}
+
+
+
+.prod-vitrine-preco{
+    color: #007828;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1rem;
+    
+}
