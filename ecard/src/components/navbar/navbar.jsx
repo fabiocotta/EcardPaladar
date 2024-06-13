@@ -19,6 +19,10 @@ function NavBar(props){
     
     }
 
+    function historico(){
+        navigate('/historico')
+    }
+
     function abrirCart(){
 
         /* aqui temos um event feito em javascrip puro para abrir e fechar o modal cart*/
@@ -36,7 +40,7 @@ function NavBar(props){
                 props.showMenu &&
         
                 <div className="menu">
-                    <a href="#">Histórico</a>
+                    <a onClick={historico} href="#">Histórico</a>
                     <button onClick={abrirCart} className="btn-sacola btn-verde">
                         <img className="icon" src={bag} alt="sacola"/>
                         Sacola

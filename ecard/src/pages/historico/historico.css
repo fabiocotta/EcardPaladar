@@ -1,0 +1,14 @@
+.text-light{
+    color: #747474;
+}
+
+.text-green{
+    color: #007828;
+
+}
+
+.box-pedido{
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 20px;
+}
