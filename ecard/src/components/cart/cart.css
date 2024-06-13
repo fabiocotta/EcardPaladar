@@ -1,0 +1,38 @@
+.footer-cart{
+    border-top: 1px solid #acacac;
+    margin-top: 20px;
+
+}
+
+.footer-cart-valor{
+    margin-top: 20px;
+    margin-bottom: 23px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.btn-checkout{
+    width: 100%;
+    padding: 20px;
+    height: 70px;
+    font-size: 1.5rem;
+    background-color: #007828;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-checkout:hover{
+    background-color: #154425;
+}
+
+.lista-produto{
+    height: calc(100% - 250px);
+    margin-right: 20px;
+    margin-left: 20px;
+    overflow: auto;
+}
+

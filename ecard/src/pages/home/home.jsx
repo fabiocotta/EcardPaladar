@@ -3,7 +3,7 @@ import ProdutoVitrine from "../../components/produto-vitrine/produto-vitrine.jsx
 
 function Home(){
     return <>
-        <NavBar />
+        <NavBar showMenu />
         <div className="container">
             <div className="titulo text-center">
                 <h1>Nossas Geléias</h1>
