@@ -9,7 +9,8 @@
     margin-bottom: 23px;
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
 }
 
 .btn-checkout{

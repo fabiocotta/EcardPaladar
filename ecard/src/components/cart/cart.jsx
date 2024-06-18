@@ -1,15 +1,19 @@
 import { Dock } from "react-dock";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProdutoCart from "../produto-cart/produto-cart";
 import "./cart.css"
-import Checkout from "../../pages/checkout/checkout";
+//import Checkout from "../../pages/checkout/checkout";
 import { useNavigate } from "react-router-dom";
+//import { cartprodutos } from "../../dados/dados";
+import { CartContext } from "../../contexts/cart-context";
+
 
 
 function Cart(){
 
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const {cartprodutos, totalCart} = useContext(CartContext);
 
     /* usando o useeffect do react para ficar ouvindo chamadas - 
     se deixar sem parametros executa uma vez quando carrega a pagina */
@@ -39,15 +43,25 @@ function Cart(){
             </div>
 
             <div className="lista-produto">
-                <ProdutoCart />
-                <ProdutoCart />
-           
+                {
+                    cartprodutos.map(function(itemcard){
+                        return <ProdutoCart key={itemcard.id}
+                                            id={itemcard.id}
+                                            foto={itemcard.foto}
+                                            descricao={itemcard.descricao}
+                                            nome={itemcard.nome}
+                                            qtd={itemcard.qtd}
+                                            preco={itemcard.preco}    />
+                    })
+                }
+
             </div>
 
             <div className="footer-cart">
                 <div className="footer-cart-valor">
                     <span>Total</span>
-                    <span><strong>R$ 371,80</strong></span>
+                    <span><strong>{new Intl.NumberFormat('pt-BR',
+                                    {style: 'currency', currency: "BRL"}).format(totalCart)}</strong></span>
                 </div>
 
                 <div>

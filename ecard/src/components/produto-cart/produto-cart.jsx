@@ -1,25 +1,58 @@
 
 import "./produto-cart.css";
-import foto from "../../assets/geleiaacai.jpg"
+import { CartContext } from "../../contexts/cart-context"; 
+import { useContext } from "react";
 
-function ProdutoCart(){
+
+function ProdutoCart(props){
+
+    const {RemoveitemCart} = useContext(CartContext);
+    const {AdditemCart}    = useContext(CartContext);
+
+    function Removeitem(){
+
+        const item = {
+            id: props.id
+
+        }
+
+        RemoveitemCart(item);
+
+    }
+
+    function Additem(){
+
+        const item = {
+            id: props.id,
+            nome: props.nome,
+            preco: props.preco,
+            foto: props.foto,
+            qtd: 1
+        }
+
+        AdditemCart(item);
+
+    }
 
     return <div className="produto-cart-box">
-        <img src={foto} alt="Foto" />
+        <img src={props.foto} alt="Foto" />
 
         <div>
-            <p className="produto-cart-nome">Geleia de Açaí</p>
-            <p className="produto-cart-descricao">Geleia de Açaí elaborada com 75% de polpa de açaí e seus conservantes são naturais, possuindo somente 25% de açúcar, tipo demerara. Sem glúten, zero lactose, sem corantes ou saborizantes artificiais</p>
-            <p className="produto-cart-valor">R$ 18,90</p>
+            <p className="produto-cart-nome">{props.nome}</p>
+            <p className="produto-cart-descricao">{props.descricao}</p>
+            <p className="produto-cart-valor">{new Intl.NumberFormat('pt-BR',
+                {style: 'currency', currency: "BRL"}).format(props.preco)}</p>
 
             <div className="footer-produto-cart">
                 <div>
-                    <button className="footer-produto-btn">-</button>
-                    <span className="footer-produto-qtd">02</span>
-                    <button className="footer-produto-btn">+</button>
+                    <button onClick={Removeitem} className="footer-produto-btn">-</button>
+                    <span className="footer-produto-qtd">{props.qtd}</span>
+                    <button onClick={Additem} className="footer-produto-btn">+</button>
                 </div>
 
-                <p className="footer-produto-preco">R$ 37,80</p>
+                <p className="footer-produto-preco">{new Intl.NumberFormat('pt-BR',
+                {style: 'currency', currency: "BRL"}).format(props.preco * props.qtd)}</p>
+
             </div>
         </div>
     </div>
