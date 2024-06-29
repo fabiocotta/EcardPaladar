@@ -3,10 +3,8 @@ import { db, query } from "../config/database.js";
 
 const routePedido = Router();
 
-
-
 routePedido.get("/pedidos", function(req, res){
-    db.all('select * from pedido', [], function(err, rows){
+    db.all(`select id_pedido, total, nome, email, strftime('%d/%m/%Y', dt_pedido) as dt_pedido from pedido`, [], function(err, rows){
         if (err)
             return res.status(500).send("Ocorreu um erro: " + err.message)
         else
@@ -15,11 +13,10 @@ routePedido.get("/pedidos", function(req, res){
     });
 });
 
-
 routePedido.post("/pedidos", function(req, res){
 
     let sql = `insert into pedido(id_usuario, nome, email, fone, endereco,
-               bairro, cidade, uf, cep, total) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_date)
+               bairro, cidade, uf, cep, total, dt_pedido) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_date)
                returning id_pedido`;
     
     let p = req.body;

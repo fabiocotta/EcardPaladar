@@ -3,7 +3,6 @@ import { db } from "../config/database.js";
 
 const routeProduto = Router();
 
-
 routeProduto.get("/produtos", function(req, res){
     db.all('select * from produto', [], function(err, rows){
         if (err)

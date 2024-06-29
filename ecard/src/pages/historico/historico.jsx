@@ -1,10 +1,26 @@
 import NavBar from "../../components/navbar/navbar";
 import "./historico.css"
-import {pedidos} from "../../dados/dados.js"
+
+import api from "../../services/api";
+import { useEffect, useState } from "react";
 
 
 
 function Historico(){
+
+    const [pedidos, setPedidos] = useState([]);
+
+    useEffect(() => {
+        api.get("/pedidos")
+            .then((resp) => {
+                setPedidos(resp.data);
+
+            })
+            .catch((err) => {
+                alert("Erro ao carregar histórico de pedidos")
+            })
+    }, []);
+
     return <>
         <NavBar showMenu />
             <div className="container">
@@ -15,16 +31,18 @@ function Historico(){
 
             <div className="box-pedido">
                 <table className="table">
+                    <tbody>
                     { 
                         pedidos.map( function(pedido){
                             return <tr key={pedido.id_pedido}>
                                 <td><strong>Pedido {pedido.id_pedido}</strong></td>
-                                <td className="text-light">Data {pedido.dt}</td>
-                                <td className="text-green">Valor {new Intl.NumberFormat('pt-BR',
+                                <td className="text-light"> {pedido.dt_pedido}</td>
+                                <td className="text-green"> {new Intl.NumberFormat('pt-BR',
                                                                         {style: 'currency', currency: "BRL"}).format(pedido.total)}</td>
                             </tr>
                         })
                     }
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react";
 import NavBar from "../../components/navbar/navbar.jsx";
 import ProdutoVitrine from "../../components/produto-vitrine/produto-vitrine.jsx";
-import { produtos } from "../../dados/dados.js";
+import api from "../../services/api.js";
 
 function Home(){
+
+    const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        api.get("/produtos")
+        .then((resp) => {
+            setProdutos(resp.data);
+
+        })
+        .catch((err) => {
+            alert('Erro ao carregar os produtos na vitrine')
+        })
+    }, []);
+
     return <>
         <NavBar showMenu />
         <div className="container">
@@ -15,8 +30,8 @@ function Home(){
         <div className="text-center">
             {
                 produtos.map( function(produto){
-                    return <ProdutoVitrine  key={produto.id}
-                                            id={produto.id}
+                    return <ProdutoVitrine  key={produto.id_produto}
+                                            id={produto.id_produto}
                                             nome={produto.nome}
                                             foto={produto.foto}
                                             descricao={produto.descricao}
