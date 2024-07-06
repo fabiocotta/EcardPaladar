@@ -1,8 +1,9 @@
 import NavBar from "../../components/navbar/navbar";
-import "./historico.css"
-
+import "./historico.css";
 import api from "../../services/api";
 import { useEffect, useState } from "react";
+import historicoPDF from "../../reports/historico/rphistorico";
+
 
 
 
@@ -26,6 +27,7 @@ function Historico(){
             <div className="container">
             <div className="titulo text-center">
                 <h1>Histórico de Pedidos</h1>
+                <button onClick={(e) => historicoPDF(pedidos)} className="btn-pdf"><i className="fa-regular fa-file-pdf"></i>Gerar PDF</button>
             
             </div>
 
